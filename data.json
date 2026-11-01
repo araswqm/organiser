@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:35:11.059Z",
+  "updatedAt": "2026-11-01T21:35:46.295Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -92,6 +92,10 @@
     },
     {
       "id": "Kırmızı 5mm",
+      "category": "LED"
+    },
+    {
+      "id": "Sarı 5mm",
       "category": "LED"
     }
   ],
@@ -200,6 +204,11 @@
       "item": "Kırmızı 5mm",
       "drawer": "B1",
       "qty": 11
+    },
+    {
+      "item": "Sarı 5mm",
+      "drawer": "B1",
+      "qty": 12
     }
   ]
 }
