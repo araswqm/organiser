@@ -1,0 +1,15 @@
+{
+  "name": "Organizer Stok",
+  "short_name": "Organizer",
+  "description": "20 çekmeceli organizer için QR destekli stok takibi",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f5f7",
+  "theme_color": "#1d4ed8",
+  "lang": "tr",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
