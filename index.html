@@ -72,7 +72,7 @@ nav button.on{color:var(--pr);font-weight:700}
 </style>
 </head>
 <body>
-<header><h1>📦 Organizer</h1><button id="scanBtn" class="primary">📷 QR Tara</button></header>
+<header><div style="display:flex;align-items:center;gap:6px"><h1>📦 Organizer</h1><button id="syncDot" class="x" style="padding:2px 6px;font-size:14px" aria-label="Senkron durumu"></button></div><button id="scanBtn" class="primary">📷 QR Tara</button></header>
 <main id="main"></main>
 <nav id="tabs">
   <button data-act="tab" data-t="grid">Çekmeceler</button>
@@ -110,7 +110,8 @@ nav button.on{color:var(--pr);font-weight:700}
 <script>
 const KEY = 'organizer-db-v1';
 const COLS = ['A','B','C','D','E'], ROWS = [1,2,3,4];
-const DEF_CATS = ['Diğer','Direnç','Kondansatör','Transistör','Diyot','Entegre','Şarj Modülü','Sensör','Konnektör','LED','Modül/Kart'];
+const DEF_CATS = []; // kategoriler uygulamadan (Ayarlar veya eşya eklerken) eklenir
+const DATA_URL = 'data.json'; // repodaki veri dosyası
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -122,29 +123,31 @@ function norm(s){
 
 function fix(d){
   d.version = 1;
-  d.categories = Array.isArray(d.categories) && d.categories.length ? d.categories : [...DEF_CATS];
-  if (!d.categories.includes('Diğer')) d.categories.unshift('Diğer');
+  d.updatedAt = d.updatedAt || '';
+  d.categories = Array.isArray(d.categories) ? d.categories : [...DEF_CATS];
   d.items = Array.isArray(d.items) ? d.items : [];
   d.stock = Array.isArray(d.stock) ? d.stock : [];
-  d.items.forEach(i => { if (!i.category) i.category = 'Diğer'; if (!d.categories.includes(i.category)) d.categories.push(i.category); });
+  d.items.forEach(i => { if (!i.category) i.category = ''; if (i.category && !d.categories.includes(i.category)) d.categories.push(i.category); });
   return d;
 }
 function load(){
   try { const d = JSON.parse(localStorage.getItem(KEY)); if (d && Array.isArray(d.items) && Array.isArray(d.stock)) return fix(d); } catch(e){}
   return fix({});
 }
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e){ toast('Kaydedilemedi!'); } }
+function persist(){ try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e){ toast('Kaydedilemedi!'); } }
+// Her değişiklikte damga güncellenir; repodaki data.json'dan yeni olan kazanır
+function save(){ db.updatedAt = new Date().toISOString(); st.pending = true; persist(); schedulePush(); }
 
 let db = load();
-const st = { tab:'grid', drawer:null, q:'' };
+const st = { tab:'grid', drawer:null, q:'', pending:false, offline:false, remote:null };
 
 function getItem(name){ const k = norm(name); return db.items.find(i => norm(i.id) === k); }
 function stockRow(drawer, name){ const k = norm(name); return db.stock.find(s => s.drawer === drawer && norm(s.item) === k); }
 function addStock(drawer, name, cat, qty){
   name = name.trim().replace(/\s+/g,' ');
   let it = getItem(name);
-  if (!it){ it = { id:name, category:cat || 'Diğer' }; db.items.push(it); }
-  else if (cat) it.category = cat;
+  if (!it){ it = { id:name, category:cat || '' }; db.items.push(it); }
+  else it.category = cat || '';
   if (cat && !db.categories.includes(cat)) db.categories.push(cat);
   const row = stockRow(drawer, it.id);
   if (row) row.qty += qty; else db.stock.push({ item:it.id, drawer, qty });
@@ -176,7 +179,7 @@ function results(){
   return `<small>${groups.length} eşya</small>` + groups.map(g => {
     const tot = g.rows.reduce((a,r) => a + r.qty, 0);
     const chips = g.rows.map(r => `<button class="chip" data-act="open" data-d="${r.drawer}">${r.drawer} · ${r.qty}</button>`).join('');
-    return `<div class="card"><div class="rowb"><div><b>${esc(g.it.id)}</b><small>${esc(g.it.category)}</small></div><span class="tot${tot ? '' : ' zero'}">${tot}</span></div><div class="chips">${chips || '<small>Çekmecede yok</small>'}</div></div>`;
+    return `<div class="card"><div class="rowb"><div><b>${esc(g.it.id)}</b><small>${esc(g.it.category || 'Kategorisiz')}</small></div><span class="tot${tot ? '' : ' zero'}">${tot}</span></div><div class="chips">${chips || '<small>Çekmecede yok</small>'}</div></div>`;
   }).join('');
 }
 function viewSearch(){
@@ -185,10 +188,27 @@ function viewSearch(){
 
 function viewSettings(){
   const units = db.stock.reduce((a,s) => a + s.qty, 0);
+  const g = ghCfg() || ghDefaults();
   return `
   <div class="card"><b>Durum</b><small>${db.items.length} eşya çeşidi · ${units} adet · ${db.stock.filter(s=>s.qty>0).map(s=>s.drawer).filter((v,i,a)=>a.indexOf(v)===i).length}/20 çekmece dolu</small></div>
-  <div class="card"><b>Yedek</b><small>Veri bu cihazın tarayıcısında durur. Düzenli olarak yedek al.</small>
-    <div class="bar" style="margin:10px 0 0"><button data-act="export">⬇ JSON dışa aktar</button><button data-act="import">⬆ JSON içe aktar</button></div></div>
+  <div class="card"><b>Veri (data.json)</b>
+    <small style="${st.pending ? 'color:var(--warn)' : ''}">${st.pending ? (ghReady() && st.sync !== 'err' ? '⟳ Repoya yazılıyor…' : '⚠ Repoya yüklenmemiş değişiklikler var.' + (st.syncError ? ' (' + esc(st.syncError) + ')' : '')) : st.offline ? 'Repodaki data.json okunamadı, yerel kopya kullanılıyor.' : '✓ Repodaki data.json ile güncel.'}</small>
+    <small style="margin-top:6px">${ghReady() ? 'Değişiklikler otomatik olarak repoya kaydedilir. Aşağıdaki butonlar elle yedek içindir.' : 'GitHub bağlantısı kurulmadı: değişiklikler yalnızca bu cihazda tutulur. Aşağıdan bağla veya data.json\'u elle indirip repoya yükle.'}</small>
+    <div class="bar" style="margin:10px 0 0"><button data-act="export">⬇ data.json indir</button><button data-act="import">⬆ JSON yükle</button></div>
+    ${st.pending && st.remote ? '<div class="bar" style="margin:0"><button data-act="pull">Repodakini al (yerel değişiklikleri at)</button></div>' : ''}</div>
+  <div class="card"><b>Kategoriler</b><small>Silmek için dokun. O kategorideki eşyalar kategorisiz kalır.</small>
+    <div class="chips">${db.categories.map(c => `<button class="chip" data-act="delcat" data-c="${esc(c)}">${esc(c)} ✕</button>`).join('') || '<small>Henüz kategori yok.</small>'}</div>
+    <div class="bar" style="margin:10px 0 0"><button data-act="addcat">+ Kategori ekle</button></div></div>
+  <div class="card"><b>GitHub senkron</b>
+    <small>${ghReady() ? '✓ Bağlı: ' + esc(g.owner + '/' + g.repo) + ' (' + esc(g.branch) + ')' : 'Bağlayınca her değişiklik anında repodaki data.json\'a yazılır.'}</small>
+    <div style="display:grid;gap:8px;margin-top:10px">
+      <input id="ghOwner" placeholder="Kullanıcı / organizasyon" value="${esc(g.owner)}" autocapitalize="off" autocomplete="off">
+      <input id="ghRepo" placeholder="Repo adı" value="${esc(g.repo)}" autocapitalize="off" autocomplete="off">
+      <div class="row" style="grid-template-columns:1fr 1fr"><input id="ghBranch" placeholder="Dal (main)" value="${esc(g.branch)}" autocapitalize="off"><input id="ghPath" placeholder="Dosya (data.json)" value="${esc(g.path)}" autocapitalize="off"></div>
+      <input id="ghToken" type="password" placeholder="${ghReady() ? 'Token kayıtlı (değiştirmek için yapıştır)' : 'github_pat_… token'}" autocomplete="off">
+    </div>
+    <div class="bar" style="margin:10px 0 0"><button class="primary" data-act="ghsave">Kaydet ve bağlan</button>${ghReady() ? '<button data-act="ghoff">Bağlantıyı kaldır</button>' : ''}</div>
+    <small style="margin-top:8px">Token: GitHub → Settings → Developer settings → Fine-grained tokens → yalnızca bu repo, Repository permissions → Contents: Read and write.</small></div>
   <div class="card"><b>Çekmece etiketleri</b><small>A1–E4 için QR + yazı etiketleri üretir, yazdırabilirsin.</small>
     <div class="bar" style="margin:10px 0 0"><button data-act="tab" data-t="labels">🏷 Etiketleri göster</button></div></div>`;
 }
@@ -207,19 +227,21 @@ function viewLabels(){
 function render(){
   document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === st.tab));
   const m = $('#main');
-  m.innerHTML = ({ grid:viewGrid, search:viewSearch, settings:viewSettings, labels:viewLabels })[st.tab]();
+  const banner = st.pending && (!ghReady() || st.sync === 'err') && (st.tab === 'grid' || st.tab === 'search')
+    ? '<div class="card" style="border-color:var(--warn)"><small style="color:var(--warn)">⚠ Repoya yüklenmemiş değişiklikler var.</small><div class="bar" style="margin:8px 0 0"><button data-act="tab" data-t="settings">Ayarlar\'a git</button></div></div>' : '';
+  m.innerHTML = banner + ({ grid:viewGrid, search:viewSearch, settings:viewSettings, labels:viewLabels })[st.tab]();
   if (st.tab === 'search') $('#q').addEventListener('input', e => { st.q = e.target.value; $('#results').innerHTML = results(); });
 }
 
 // ---------- Çekmece paneli ----------
 function fillCats(sel){
-  $('#fCat').innerHTML = db.categories.map(c => `<option>${esc(c)}</option>`).join('') + '<option value="__new">+ Yeni kategori…</option>';
-  $('#fCat').value = sel && db.categories.includes(sel) ? sel : 'Diğer';
+  $('#fCat').innerHTML = '<option value="">Kategorisiz</option>' + db.categories.map(c => `<option>${esc(c)}</option>`).join('') + '<option value="__new">+ Yeni kategori…</option>';
+  $('#fCat').value = sel && db.categories.includes(sel) ? sel : '';
 }
 function fillItemList(){ $('#itemList').innerHTML = db.items.map(i => `<option value="${esc(i.id)}">${esc(i.category)}</option>`).join(''); }
 function openDrawer(d){
   st.drawer = d;
-  fillItemList(); fillCats('Diğer');
+  fillItemList(); fillCats('');
   $('#fName').value = ''; $('#fQty').value = 1;
   $('#sheet').hidden = false;
   renderSheet();
@@ -231,7 +253,7 @@ function renderSheet(){
   const rows = db.stock.filter(s => s.drawer === d);
   $('#sheetList').innerHTML = rows.length ? rows.map(r => {
     const it = getItem(r.item);
-    return `<div class="srow${r.qty ? '' : ' zero'}"><div class="nm"><b>${esc(r.item)}</b><small>${esc(it ? it.category : '')}${r.qty ? '' : ' · bitti'}</small></div>
+    return `<div class="srow${r.qty ? '' : ' zero'}"><div class="nm"><b>${esc(r.item)}</b><small>${esc(it && it.category ? it.category : 'Kategorisiz')}${r.qty ? '' : ' · bitti'}</small></div>
     <div class="qc"><button data-act="dec" data-i="${esc(r.item)}">−</button><input type="number" min="0" inputmode="numeric" value="${r.qty}" data-act="setq" data-i="${esc(r.item)}"><button data-act="inc" data-i="${esc(r.item)}">+</button><button class="x" data-act="del" data-i="${esc(r.item)}">🗑</button></div></div>`;
   }).join('') : '<p class="hint">Bu çekmece boş.</p>';
 }
@@ -239,7 +261,7 @@ function renderSheet(){
 $('#sheetClose').onclick = closeDrawer;
 $('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeDrawer(); });
 $('#fName').addEventListener('input', e => { const it = getItem(e.target.value); if (it) fillCats(it.category); });
-let prevCat = 'Diğer';
+let prevCat = '';
 $('#fCat').addEventListener('focus', e => { prevCat = e.target.value; });
 $('#fCat').addEventListener('change', e => {
   if (e.target.value !== '__new') return;
@@ -254,7 +276,7 @@ $('#addForm').addEventListener('submit', e => {
   addStock(st.drawer, name, $('#fCat').value, qty);
   toast(`${name} +${qty} → ${st.drawer}`);
   $('#fName').value = ''; $('#fQty').value = 1;
-  fillItemList(); fillCats('Diğer'); renderSheet();
+  fillItemList(); fillCats(''); renderSheet();
   $('#fName').focus();
 });
 
@@ -277,6 +299,27 @@ document.addEventListener('click', e => {
   else if (act === 'export') exportJson();
   else if (act === 'import') $('#importFile').click();
   else if (act === 'print') window.print();
+  else if (act === 'addcat'){
+    const n = (prompt('Yeni kategori adı:') || '').trim();
+    if (n && !db.categories.includes(n)){ db.categories.push(n); save(); render(); }
+  }
+  else if (act === 'delcat'){
+    const c = b.dataset.c, n = db.items.filter(i => i.category === c).length;
+    if (confirm(n ? `"${c}" ${n} eşyada kullanılıyor; bu eşyalar kategorisiz kalacak. Silinsin mi?` : `"${c}" silinsin mi?`)){
+      db.categories = db.categories.filter(x => x !== c);
+      db.items.forEach(i => { if (i.category === c) i.category = ''; });
+      save(); render();
+    }
+  }
+  else if (act === 'ghsave') saveGh();
+  else if (act === 'ghoff'){
+    if (confirm('GitHub bağlantısı ve token bu cihazdan silinsin mi?')){ localStorage.removeItem(GH_KEY); setSync(''); render(); toast('Bağlantı kaldırıldı'); }
+  }
+  else if (act === 'pull'){
+    if (st.remote && confirm('Bu cihazdaki yerel değişiklikler atılıp repodaki data.json yüklenecek. Devam edilsin mi?')){
+      db = fix(JSON.parse(JSON.stringify(st.remote))); st.pending = false; persist(); render();
+    }
+  }
 });
 document.addEventListener('change', e => {
   const el = e.target;
@@ -291,7 +334,7 @@ function exportJson(){
   const blob = new Blob([JSON.stringify(db, null, 2)], { type:'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'organizer-' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = 'data.json';
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1500);
 }
@@ -354,10 +397,140 @@ function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('sh
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 
+// ---------- GitHub senkron (değişiklik anında repoya yazılır) ----------
+const GH_KEY = 'organizer-gh';
+function ghCfg(){ try { return JSON.parse(localStorage.getItem(GH_KEY)) || null; } catch(e){ return null; } }
+function ghReady(){ const c = ghCfg(); return !!(c && c.token && c.owner && c.repo); }
+function ghDefaults(){
+  const h = location.hostname || '', pages = h.endsWith('.github.io');
+  return { owner: pages ? h.split('.')[0] : '', repo: pages ? (location.pathname.split('/')[1] || '') : '', branch:'main', path:'data.json', token:'' };
+}
+function ghUrl(c){ return 'https://api.github.com/repos/' + encodeURIComponent(c.owner) + '/' + encodeURIComponent(c.repo) + '/contents/' + c.path.split('/').map(encodeURIComponent).join('/'); }
+function ghHeaders(c){ return { Authorization:'Bearer ' + c.token, Accept:'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }; }
+const b64e = s => btoa(unescape(encodeURIComponent(s)));
+const b64d = s => decodeURIComponent(escape(atob(s.replace(/\s/g, ''))));
+function ghErr(s){
+  return s === 401 ? 'Token geçersiz (401)' : s === 403 ? 'Token yetkisiz veya limit aşıldı (403)' : s === 404 ? 'Repo/dal bulunamadı (404)'
+    : (s === 409 || s === 422) ? 'Çakışma (' + s + '), tekrar denenecek' : 'GitHub hatası (' + s + ')';
+}
+async function ghGet(c){
+  const r = await fetch(ghUrl(c) + '?ref=' + encodeURIComponent(c.branch) + '&t=' + Date.now(), { headers:ghHeaders(c), cache:'no-store' });
+  if (r.status === 404) return { missing:true };
+  if (!r.ok) throw new Error(ghErr(r.status));
+  const j = await r.json();
+  return { sha:j.sha, data:JSON.parse(b64d(j.content)) };
+}
+function setSync(s){
+  st.sync = s;
+  const d = $('#syncDot'); if (!d) return;
+  d.textContent = (!ghReady() || !s) ? '' : ({ wait:'⟳', busy:'⟳', ok:'☁ ✓', err:'⚠' })[s] || '';
+  d.style.color = s === 'err' ? 'var(--warn)' : 'var(--mut)';
+}
+function adoptRemote(data, sha){
+  db = fix(data); st.syncedAt = db.updatedAt; st.sha = sha; st.pending = false; persist();
+  render(); if (st.drawer){ fillItemList(); renderSheet(); }
+}
+
+let pushTimer = null, pushing = false, pushAgain = false;
+function schedulePush(){
+  if (!ghReady()) return;
+  setSync('wait'); clearTimeout(pushTimer); pushTimer = setTimeout(pushNow, 1500);
+}
+async function pushNow(){
+  const c = ghCfg(); if (!c || !c.token) return;
+  if (pushing){ pushAgain = true; return; }
+  pushing = true; setSync('busy');
+  try {
+    const cur = await ghGet(c);
+    if (!cur.missing){
+      const ru = (cur.data && cur.data.updatedAt) || '';
+      // Repodaki dosya, bizim bildiğimiz sürümden farklıysa başka yerden değişmiş demektir
+      if (ru && ru !== st.syncedAt && (Date.parse(ru) || 0) > (Date.parse(st.syncedAt) || 0)){
+        if (!confirm('Repodaki veri başka bir yerden değişmiş.\nTamam: bu cihazdaki veriyle üzerine yaz.\nİptal: repodakini al (bu cihazdaki son değişiklikler atılır).')){
+          adoptRemote(cur.data, cur.sha); setSync('ok'); pushing = false; return;
+        }
+      }
+    }
+    const stamp = db.updatedAt;
+    const body = { message:'Stok güncellendi (' + stamp + ')', content:b64e(JSON.stringify(db, null, 2) + '\n'), branch:c.branch };
+    if (!cur.missing) body.sha = cur.sha;
+    const r = await fetch(ghUrl(c), { method:'PUT', headers:Object.assign({ 'Content-Type':'application/json' }, ghHeaders(c)), body:JSON.stringify(body) });
+    if (!r.ok) throw new Error(ghErr(r.status));
+    const j = await r.json();
+    st.sha = j.content && j.content.sha; st.syncedAt = stamp;
+    if (db.updatedAt === stamp) st.pending = false;
+    st.syncError = ''; setSync(st.pending ? 'wait' : 'ok');
+    if (st.tab === 'settings') render();
+  } catch(e){ st.syncError = e.message; setSync('err'); }
+  pushing = false;
+  if (pushAgain){ pushAgain = false; schedulePush(); }
+}
+
+async function saveGh(){
+  const g = id => ($('#' + id).value || '').trim();
+  const old = ghCfg() || {};
+  const c = { owner:g('ghOwner'), repo:g('ghRepo'), branch:g('ghBranch') || 'main', path:g('ghPath') || 'data.json', token:g('ghToken') || old.token || '' };
+  if (!c.owner || !c.repo || !c.token){ toast('Kullanıcı, repo ve token gerekli'); return; }
+  try {
+    const r = await fetch('https://api.github.com/repos/' + encodeURIComponent(c.owner) + '/' + encodeURIComponent(c.repo), { headers:ghHeaders(c), cache:'no-store' });
+    if (!r.ok) throw new Error(r.status === 404 || r.status === 401 ? 'Repo bulunamadı veya token bu repoya erişemiyor' : ghErr(r.status));
+    const j = await r.json();
+    if (j.permissions && j.permissions.push === false) throw new Error('Token yazma yetkisine sahip değil (Contents: Read and write)');
+  } catch(e){ toast('Bağlanamadı: ' + e.message); return; }
+  localStorage.setItem(GH_KEY, JSON.stringify(c));
+  toast('Bağlandı');
+  await syncRemote();
+}
+
+// ---------- Açılışta repodaki veriyi oku ----------
+// Token varsa GitHub API'den (her zaman güncel), yoksa yayınlanan data.json'dan okunur.
+// Repodaki dosya yerel kopyadan yeni veya eşitse repo kazanır; yerel daha yeniyse
+// (henüz yazılamamış değişiklik) yerel korunur ve repoya yazılır.
+async function syncRemote(){
+  try {
+    let raw = null;
+    if (ghReady()){
+      setSync('busy');
+      const cur = await ghGet(ghCfg());
+      if (!cur.missing){ raw = cur.data; st.sha = cur.sha; }
+    } else {
+      const r = await fetch(DATA_URL + '?t=' + Date.now(), { cache:'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      raw = await r.json();
+    }
+    if (raw){
+      if (!Array.isArray(raw.items) || !Array.isArray(raw.stock)) throw new Error('format');
+      st.remote = JSON.parse(JSON.stringify(raw));
+      const remote = fix(raw);
+      st.syncedAt = remote.updatedAt;
+      const lt = Date.parse(db.updatedAt) || 0, rt = Date.parse(remote.updatedAt) || 0;
+      if (rt >= lt){ db = remote; st.pending = false; persist(); }
+      else { st.pending = true; schedulePush(); }
+    } else if (ghReady() && db.updatedAt){ st.pending = true; schedulePush(); } // repoda dosya yok
+    st.offline = false; st.syncError = '';
+    if (ghReady() && !st.pending) setSync('ok');
+  } catch(e){
+    st.offline = true;
+    if (ghReady()){ st.syncError = e.message; setSync('err'); }
+  }
+  render();
+  if (st.drawer){ fillItemList(); renderSheet(); }
+}
+$('#syncDot').onclick = () => {
+  if (!ghReady()) return;
+  if (st.sync === 'err'){ toast(st.syncError || 'Senkron hatası, tekrar deneniyor'); pushNow(); }
+  else toast(st.pending ? 'Repoya yazılıyor…' : 'Repo ile güncel');
+};
+// Uygulamaya geri dönünce başka cihazdaki değişiklikleri al
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && ghReady() && !st.pending && !pushing) syncRemote();
+});
+
 render();
 // Bağlantıdan açılış: .../#A1 veya ?d=A1
 const deep = parseDrawer(location.hash.slice(1) || new URLSearchParams(location.search).get('d'));
 if (deep) openDrawer(deep);
+syncRemote();
 </script>
 </body>
 </html>
