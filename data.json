@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:20:54.177Z",
+  "updatedAt": "2026-11-01T21:31:11.863Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -73,6 +73,10 @@
     {
       "id": "LDR",
       "category": "Sensör"
+    },
+    {
+      "id": "RGB Flaşörlü 3mm",
+      "category": "LED"
     }
   ],
   "stock": [
@@ -155,6 +159,11 @@
       "item": "LDR",
       "drawer": "B1",
       "qty": 2
+    },
+    {
+      "item": "RGB Flaşörlü 3mm",
+      "drawer": "B1",
+      "qty": 3
     }
   ]
 }
