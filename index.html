@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Organizer Stok</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4ed8">
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#111827;--mut:#6b7280;--br:#e5e7eb;--pr:#1d4ed8;--prt:#fff;--warn:#b45309}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#1a1d24;--tx:#f3f4f6;--mut:#9ca3af;--br:#2b303b;--pr:#3b82f6;--prt:#fff;--warn:#fbbf24}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;background:var(--bg);border-bottom:1px solid var(--br)}
+h1{font-size:18px;margin:0}
+h2{font-size:17px;margin:0}
+main{padding:14px 14px calc(80px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto}
+button,input,select{font:inherit;color:inherit}
+button{background:var(--card);border:1px solid var(--br);border-radius:10px;padding:9px 14px;cursor:pointer}
+button.primary{background:var(--pr);color:var(--prt);border-color:var(--pr);font-weight:600}
+input,select{background:var(--card);border:1px solid var(--br);border-radius:10px;padding:10px 12px;width:100%}
+small{color:var(--mut);display:block}
+.hint{color:var(--mut);text-align:center;margin:14px 0}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--br);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav button{flex:1;border:0;border-radius:0;background:none;padding:14px 4px;color:var(--mut)}
+nav button.on{color:var(--pr);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cell{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 2px;min-height:78px;text-align:center;overflow:hidden}
+.cell b{font-size:18px}
+.cell small{font-size:11px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell.has{border-color:var(--pr)}
+.card{background:var(--card);border:1px solid var(--br);border-radius:12px;padding:12px;margin:10px 0}
+.rowb{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tot{font-size:22px;font-weight:700}
+.tot.zero{color:var(--warn)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{padding:5px 10px;border-radius:999px;font-size:14px}
+.bar{display:flex;gap:8px;margin-bottom:12px}
+.bar>*{flex:1}
+#sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+#sheet[hidden],#scan[hidden]{display:none}
+.sheet-card{background:var(--bg);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 14px calc(16px + env(safe-area-inset-bottom))}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--card);border:1px solid var(--br);border-radius:12px;padding:10px;margin:8px 0}
+.srow.zero{opacity:.65}
+.nm{min-width:0;flex:1}
+.nm b{display:block;overflow:hidden;text-overflow:ellipsis}
+.qc{display:flex;align-items:center;gap:4px}
+.qc button{padding:6px 11px}
+.qc input{width:58px;text-align:center;padding:7px 4px}
+.x{border:0;background:none}
+#addForm{display:grid;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--br)}
+.row{display:grid;grid-template-columns:1fr 90px;gap:8px}
+#scan{position:fixed;inset:0;background:#000;z-index:30}
+#scan video{width:100%;height:100%;object-fit:cover}
+.scanbar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;align-items:center;padding:14px 14px calc(14px + env(safe-area-inset-bottom));background:rgba(0,0,0,.65);color:#fff}
+.scanbar span{flex:1;font-size:14px}
+.frame{position:absolute;left:50%;top:42%;width:62vmin;height:62vmin;transform:translate(-50%,-50%);border:3px solid #fff;border-radius:18px;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.2s;z-index:40;max-width:90vw;text-align:center}
+#toast.show{opacity:.95;transform:translateX(-50%)}
+.labels{display:grid;grid-template-columns:repeat(auto-fill,minmax(34mm,1fr));gap:4mm}
+.label{background:#fff;color:#000;border:1px dashed #999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3mm;break-inside:avoid}
+.label svg{width:24mm;height:24mm}
+.label span{font:700 7mm/1.1 system-ui,sans-serif;margin-top:1mm}
+@media print{
+ header,nav,.noprint,#toast{display:none!important}
+ html,body{background:#fff}
+ main{padding:0;max-width:none}
+ .labels{grid-template-columns:repeat(4,40mm);gap:3mm}
+}
+</style>
+</head>
+<body>
+<header><h1>📦 Organizer</h1><button id="scanBtn" class="primary">📷 QR Tara</button></header>
+<main id="main"></main>
+<nav id="tabs">
+  <button data-act="tab" data-t="grid">Çekmeceler</button>
+  <button data-act="tab" data-t="search">Ara</button>
+  <button data-act="tab" data-t="settings">Ayarlar</button>
+</nav>
+
+<div id="sheet" hidden>
+  <div class="sheet-card">
+    <div class="sheet-head"><h2 id="sheetTitle"></h2><button id="sheetClose">✕ Kapat</button></div>
+    <div id="sheetList"></div>
+    <form id="addForm" autocomplete="off">
+      <input id="fName" list="itemList" placeholder="Eşya kodu veya adı (TP4056, jumper kablo…)" required>
+      <datalist id="itemList"></datalist>
+      <div class="row">
+        <select id="fCat"></select>
+        <input id="fQty" type="number" min="1" value="1" inputmode="numeric" aria-label="Adet">
+      </div>
+      <button class="primary" type="submit">Bu çekmeceye ekle</button>
+    </form>
+  </div>
+</div>
+
+<div id="scan" hidden>
+  <video id="video" playsinline muted></video>
+  <div class="frame"></div>
+  <div class="scanbar"><span>Çekmecenin QR kodunu çerçeveye getir</span><button id="scanManual">Elle gir</button><button id="scanClose">Kapat</button></div>
+</div>
+<canvas id="cv" hidden></canvas>
+<input type="file" id="importFile" accept="application/json,.json" hidden>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" crossorigin="anonymous"></script>
+<script>
+const KEY = 'organizer-db-v1';
+const COLS = ['A','B','C','D','E'], ROWS = [1,2,3,4];
+const DEF_CATS = ['Diğer','Direnç','Kondansatör','Transistör','Diyot','Entegre','Şarj Modülü','Sensör','Konnektör','LED','Modül/Kart'];
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// "tp4056" = "TP4056", "Şarj" = "sarj" gibi eşleşmeler için
+function norm(s){
+  return String(s || '').replace(/[İIı]/g,'i').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function fix(d){
+  d.version = 1;
+  d.categories = Array.isArray(d.categories) && d.categories.length ? d.categories : [...DEF_CATS];
+  if (!d.categories.includes('Diğer')) d.categories.unshift('Diğer');
+  d.items = Array.isArray(d.items) ? d.items : [];
+  d.stock = Array.isArray(d.stock) ? d.stock : [];
+  d.items.forEach(i => { if (!i.category) i.category = 'Diğer'; if (!d.categories.includes(i.category)) d.categories.push(i.category); });
+  return d;
+}
+function load(){
+  try { const d = JSON.parse(localStorage.getItem(KEY)); if (d && Array.isArray(d.items) && Array.isArray(d.stock)) return fix(d); } catch(e){}
+  return fix({});
+}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e){ toast('Kaydedilemedi!'); } }
+
+let db = load();
+const st = { tab:'grid', drawer:null, q:'' };
+
+function getItem(name){ const k = norm(name); return db.items.find(i => norm(i.id) === k); }
+function stockRow(drawer, name){ const k = norm(name); return db.stock.find(s => s.drawer === drawer && norm(s.item) === k); }
+function addStock(drawer, name, cat, qty){
+  name = name.trim().replace(/\s+/g,' ');
+  let it = getItem(name);
+  if (!it){ it = { id:name, category:cat || 'Diğer' }; db.items.push(it); }
+  else if (cat) it.category = cat;
+  if (cat && !db.categories.includes(cat)) db.categories.push(cat);
+  const row = stockRow(drawer, it.id);
+  if (row) row.qty += qty; else db.stock.push({ item:it.id, drawer, qty });
+  save();
+}
+function cleanupItems(){
+  db.items = db.items.filter(it => db.stock.some(s => norm(s.item) === norm(it.id)));
+}
+
+// ---------- Görünümler ----------
+function viewGrid(){
+  let h = '<div class="grid">';
+  for (const r of ROWS) for (const c of COLS){
+    const d = c + r;
+    const rows = db.stock.filter(s => s.drawer === d && s.qty > 0);
+    const names = rows.slice(0,2).map(s => s.item).join(', ');
+    h += `<button class="cell${rows.length ? ' has' : ''}" data-act="open" data-d="${d}"><b>${d}</b><small>${rows.length ? esc(names) : 'boş'}</small></button>`;
+  }
+  return h + '</div><p class="hint">Çekmeceye dokun veya 📷 ile QR oku.</p>';
+}
+
+function results(){
+  const q = norm(st.q);
+  const groups = db.items
+    .map(it => ({ it, rows: db.stock.filter(s => norm(s.item) === norm(it.id)) }))
+    .filter(g => !q || norm(g.it.id).includes(q) || norm(g.it.category).includes(q) || g.rows.some(r => norm(r.drawer) === q))
+    .sort((a,b) => a.it.id.localeCompare(b.it.id,'tr'));
+  if (!groups.length) return '<p class="hint">Sonuç yok.</p>';
+  return `<small>${groups.length} eşya</small>` + groups.map(g => {
+    const tot = g.rows.reduce((a,r) => a + r.qty, 0);
+    const chips = g.rows.map(r => `<button class="chip" data-act="open" data-d="${r.drawer}">${r.drawer} · ${r.qty}</button>`).join('');
+    return `<div class="card"><div class="rowb"><div><b>${esc(g.it.id)}</b><small>${esc(g.it.category)}</small></div><span class="tot${tot ? '' : ' zero'}">${tot}</span></div><div class="chips">${chips || '<small>Çekmecede yok</small>'}</div></div>`;
+  }).join('');
+}
+function viewSearch(){
+  return `<input id="q" type="search" placeholder="Kod, ad veya kategori ara…" value="${esc(st.q)}" autocomplete="off"><div id="results">${results()}</div>`;
+}
+
+function viewSettings(){
+  const units = db.stock.reduce((a,s) => a + s.qty, 0);
+  return `
+  <div class="card"><b>Durum</b><small>${db.items.length} eşya çeşidi · ${units} adet · ${db.stock.filter(s=>s.qty>0).map(s=>s.drawer).filter((v,i,a)=>a.indexOf(v)===i).length}/20 çekmece dolu</small></div>
+  <div class="card"><b>Yedek</b><small>Veri bu cihazın tarayıcısında durur. Düzenli olarak yedek al.</small>
+    <div class="bar" style="margin:10px 0 0"><button data-act="export">⬇ JSON dışa aktar</button><button data-act="import">⬆ JSON içe aktar</button></div></div>
+  <div class="card"><b>Çekmece etiketleri</b><small>A1–E4 için QR + yazı etiketleri üretir, yazdırabilirsin.</small>
+    <div class="bar" style="margin:10px 0 0"><button data-act="tab" data-t="labels">🏷 Etiketleri göster</button></div></div>`;
+}
+
+function viewLabels(){
+  if (typeof qrcode === 'undefined') return '<p class="hint">QR kütüphanesi yüklenemedi. İnternet bağlantısı gerekli.</p>';
+  let h = '<div class="bar noprint"><button class="primary" data-act="print">🖨 Yazdır</button><button data-act="tab" data-t="settings">← Geri</button></div><div class="labels">';
+  for (const r of ROWS) for (const c of COLS){
+    const d = c + r;
+    const q = qrcode(0,'M'); q.addData(d); q.make();
+    h += `<div class="label">${q.createSvgTag({ cellSize:4, margin:0, scalable:true })}<span>${d}</span></div>`;
+  }
+  return h + '</div>';
+}
+
+function render(){
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === st.tab));
+  const m = $('#main');
+  m.innerHTML = ({ grid:viewGrid, search:viewSearch, settings:viewSettings, labels:viewLabels })[st.tab]();
+  if (st.tab === 'search') $('#q').addEventListener('input', e => { st.q = e.target.value; $('#results').innerHTML = results(); });
+}
+
+// ---------- Çekmece paneli ----------
+function fillCats(sel){
+  $('#fCat').innerHTML = db.categories.map(c => `<option>${esc(c)}</option>`).join('') + '<option value="__new">+ Yeni kategori…</option>';
+  $('#fCat').value = sel && db.categories.includes(sel) ? sel : 'Diğer';
+}
+function fillItemList(){ $('#itemList').innerHTML = db.items.map(i => `<option value="${esc(i.id)}">${esc(i.category)}</option>`).join(''); }
+function openDrawer(d){
+  st.drawer = d;
+  fillItemList(); fillCats('Diğer');
+  $('#fName').value = ''; $('#fQty').value = 1;
+  $('#sheet').hidden = false;
+  renderSheet();
+}
+function closeDrawer(){ $('#sheet').hidden = true; st.drawer = null; render(); }
+function renderSheet(){
+  const d = st.drawer;
+  $('#sheetTitle').textContent = 'Çekmece ' + d;
+  const rows = db.stock.filter(s => s.drawer === d);
+  $('#sheetList').innerHTML = rows.length ? rows.map(r => {
+    const it = getItem(r.item);
+    return `<div class="srow${r.qty ? '' : ' zero'}"><div class="nm"><b>${esc(r.item)}</b><small>${esc(it ? it.category : '')}${r.qty ? '' : ' · bitti'}</small></div>
+    <div class="qc"><button data-act="dec" data-i="${esc(r.item)}">−</button><input type="number" min="0" inputmode="numeric" value="${r.qty}" data-act="setq" data-i="${esc(r.item)}"><button data-act="inc" data-i="${esc(r.item)}">+</button><button class="x" data-act="del" data-i="${esc(r.item)}">🗑</button></div></div>`;
+  }).join('') : '<p class="hint">Bu çekmece boş.</p>';
+}
+
+$('#sheetClose').onclick = closeDrawer;
+$('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeDrawer(); });
+$('#fName').addEventListener('input', e => { const it = getItem(e.target.value); if (it) fillCats(it.category); });
+let prevCat = 'Diğer';
+$('#fCat').addEventListener('focus', e => { prevCat = e.target.value; });
+$('#fCat').addEventListener('change', e => {
+  if (e.target.value !== '__new') return;
+  const n = (prompt('Yeni kategori adı:') || '').trim();
+  if (n){ if (!db.categories.includes(n)) db.categories.push(n); save(); fillCats(n); } else fillCats(prevCat);
+});
+$('#addForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#fName').value.trim();
+  const qty = Math.max(1, parseInt($('#fQty').value) || 1);
+  if (!name) return;
+  addStock(st.drawer, name, $('#fCat').value, qty);
+  toast(`${name} +${qty} → ${st.drawer}`);
+  $('#fName').value = ''; $('#fQty').value = 1;
+  fillItemList(); fillCats('Diğer'); renderSheet();
+  $('#fName').focus();
+});
+
+// ---------- Genel tıklama/değişiklik ----------
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b || b.tagName === 'INPUT') return;
+  const act = b.dataset.act;
+  if (act === 'tab'){ st.tab = b.dataset.t; render(); }
+  else if (act === 'open') openDrawer(b.dataset.d);
+  else if (act === 'inc' || act === 'dec'){
+    const r = stockRow(st.drawer, b.dataset.i);
+    if (r){ r.qty = Math.max(0, r.qty + (act === 'inc' ? 1 : -1)); save(); renderSheet(); }
+  }
+  else if (act === 'del'){
+    if (confirm(`"${b.dataset.i}" bu çekmeceden silinsin mi?`)){
+      db.stock = db.stock.filter(s => !(s.drawer === st.drawer && norm(s.item) === norm(b.dataset.i)));
+      cleanupItems(); save(); renderSheet();
+    }
+  }
+  else if (act === 'export') exportJson();
+  else if (act === 'import') $('#importFile').click();
+  else if (act === 'print') window.print();
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.act === 'setq'){
+    const r = stockRow(st.drawer, el.dataset.i);
+    if (r){ r.qty = Math.max(0, parseInt(el.value) || 0); save(); renderSheet(); }
+  }
+});
+
+// ---------- Yedek ----------
+function exportJson(){
+  const blob = new Blob([JSON.stringify(db, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'organizer-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+}
+$('#importFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  try {
+    const d = JSON.parse(await f.text());
+    if (!d || !Array.isArray(d.items) || !Array.isArray(d.stock)) throw new Error('format');
+    if (!confirm('Mevcut veri silinip bu dosya yüklenecek. Devam edilsin mi?')) return;
+    db = fix(d); save(); render(); toast('İçe aktarıldı');
+  } catch(err){ toast('Geçersiz JSON dosyası'); }
+});
+
+// ---------- QR tarama ----------
+let stream = null, scanning = false;
+function parseDrawer(s){ const m = String(s || '').trim().match(/([A-E])\s*([1-4])\s*$/i); return m ? m[1].toUpperCase() + m[2] : null; }
+async function startScan(){
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof jsQR === 'undefined'){
+    toast('Kamera/QR okuyucu kullanılamıyor (HTTPS ve internet gerekli)'); return manualEntry();
+  }
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'environment' }, audio:false });
+    const v = $('#video'); v.srcObject = stream; await v.play();
+    $('#scan').hidden = false; scanning = true; tick();
+  } catch(err){ stopScan(); toast('Kamera açılamadı: ' + err.message); manualEntry(); }
+}
+function stopScan(){
+  scanning = false; $('#scan').hidden = true;
+  if (stream){ stream.getTracks().forEach(t => t.stop()); stream = null; }
+}
+function tick(){
+  if (!scanning) return;
+  const v = $('#video');
+  if (v.readyState === v.HAVE_ENOUGH_DATA && v.videoWidth){
+    const cv = $('#cv'), w = 480, h = Math.round(w * v.videoHeight / v.videoWidth);
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d', { willReadFrequently:true });
+    ctx.drawImage(v, 0, 0, w, h);
+    const img = ctx.getImageData(0, 0, w, h);
+    const r = jsQR(img.data, w, h, { inversionAttempts:'dontInvert' });
+    if (r){
+      const d = parseDrawer(r.data);
+      if (d){ stopScan(); if (navigator.vibrate) navigator.vibrate(60); openDrawer(d); return; }
+    }
+  }
+  requestAnimationFrame(tick);
+}
+function manualEntry(){
+  const d = parseDrawer(prompt('Çekmece kodu (A1 – E4):'));
+  if (d) openDrawer(d);
+}
+$('#scanBtn').onclick = startScan;
+$('#scanClose').onclick = stopScan;
+$('#scanManual').onclick = () => { stopScan(); manualEntry(); };
+
+// ---------- Yardımcılar ----------
+let tt;
+function toast(m){ const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2200); }
+
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+
+render();
+// Bağlantıdan açılış: .../#A1 veya ?d=A1
+const deep = parseDrawer(location.hash.slice(1) || new URLSearchParams(location.search).get('d'));
+if (deep) openDrawer(deep);
+</script>
+</body>
+</html>
