@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:06:43.468Z",
+  "updatedAt": "2026-11-01T22:07:09.770Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -179,6 +179,10 @@
     },
     {
       "id": "TM1637 4'lü Display Modülü",
+      "category": "Ekran / Gösterge"
+    },
+    {
+      "id": "Tekli 7 Segment Display",
       "category": "Ekran / Gösterge"
     }
   ],
@@ -390,6 +394,11 @@
     },
     {
       "item": "TM1637 4'lü Display Modülü",
+      "drawer": "B2",
+      "qty": 1
+    },
+    {
+      "item": "Tekli 7 Segment Display",
       "drawer": "B2",
       "qty": 1
     }
