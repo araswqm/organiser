@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:42:50.528Z",
+  "updatedAt": "2026-11-01T21:43:25.696Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -112,6 +112,10 @@
     },
     {
       "id": "FC-22 MQ2",
+      "category": "Sensör"
+    },
+    {
+      "id": "HC-SR501",
       "category": "Sensör"
     }
   ],
@@ -243,6 +247,11 @@
     },
     {
       "item": "FC-22 MQ2",
+      "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "HC-SR501",
       "drawer": "C1",
       "qty": 1
     }
