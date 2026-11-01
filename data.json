@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:39:04.957Z",
+  "updatedAt": "2026-11-01T21:41:03.054Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -104,6 +104,10 @@
     },
     {
       "id": "HC-SR04",
+      "category": "Sensör"
+    },
+    {
+      "id": "TTP223B",
       "category": "Sensör"
     }
   ],
@@ -227,6 +231,11 @@
       "item": "HC-SR04",
       "drawer": "C1",
       "qty": 2
+    },
+    {
+      "item": "TTP223B",
+      "drawer": "C1",
+      "qty": 1
     }
   ]
 }
