@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:31:59.631Z",
+  "updatedAt": "2026-11-01T21:33:24.874Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -80,6 +80,10 @@
     },
     {
       "id": "RGB Şeffaf 5mm",
+      "category": "LED"
+    },
+    {
+      "id": "Beyaz 5mm",
       "category": "LED"
     }
   ],
@@ -173,6 +177,11 @@
       "item": "RGB Şeffaf 5mm",
       "drawer": "B1",
       "qty": 1
+    },
+    {
+      "item": "Beyaz 5mm",
+      "drawer": "B1",
+      "qty": 15
     }
   ]
 }
