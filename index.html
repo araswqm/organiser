@@ -25,7 +25,7 @@ small{color:var(--mut);display:block}
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--br);padding-bottom:env(safe-area-inset-bottom);z-index:5}
 nav button{flex:1;border:0;border-radius:0;background:none;padding:14px 4px;color:var(--mut)}
 nav button.on{color:var(--pr);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 2px;min-height:78px;text-align:center;overflow:hidden}
 .cell b{font-size:18px}
 .cell small{font-size:11px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -160,7 +160,7 @@ function cleanupItems(){
 // ---------- Görünümler ----------
 function viewGrid(){
   let h = '<div class="grid">';
-  for (const r of ROWS) for (const c of COLS){
+  for (const c of COLS) for (const r of ROWS){ // A–E satır, 1–4 sütun
     const d = c + r;
     const rows = db.stock.filter(s => s.drawer === d && s.qty > 0);
     const names = rows.slice(0,2).map(s => s.item).join(', ');
@@ -216,7 +216,7 @@ function viewSettings(){
 function viewLabels(){
   if (typeof qrcode === 'undefined') return '<p class="hint">QR kütüphanesi yüklenemedi. İnternet bağlantısı gerekli.</p>';
   let h = '<div class="bar noprint"><button class="primary" data-act="print">🖨 Yazdır</button><button data-act="tab" data-t="settings">← Geri</button></div><div class="labels">';
-  for (const r of ROWS) for (const c of COLS){
+  for (const c of COLS) for (const r of ROWS){ // A–E satır, 1–4 sütun
     const d = c + r;
     const q = qrcode(0,'M'); q.addData(d); q.make();
     h += `<div class="label">${q.createSvgTag({ cellSize:4, margin:0, scalable:true })}<span>${d}</span></div>`;
