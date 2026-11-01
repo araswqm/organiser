@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:50:42.735Z",
+  "updatedAt": "2026-11-01T21:51:02.062Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -344,6 +344,11 @@
     },
     {
       "item": "Yağmur Sensörü",
+      "drawer": "D1",
+      "qty": 1
+    },
+    {
+      "item": "Toprak Nem Sensörü",
       "drawer": "D1",
       "qty": 1
     }
