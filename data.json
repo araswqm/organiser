@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:03:20.327Z",
+  "updatedAt": "2026-11-01T21:03:57.464Z",
   "categories": [
     "Direnç",
     "Diyot"
@@ -20,6 +20,10 @@
     },
     {
       "id": "330",
+      "category": "Direnç"
+    },
+    {
+      "id": "10K",
       "category": "Direnç"
     }
   ],
@@ -43,6 +47,11 @@
       "item": "330",
       "drawer": "A1",
       "qty": 1
+    },
+    {
+      "item": "10K",
+      "drawer": "A1",
+      "qty": 10
     }
   ]
 }
