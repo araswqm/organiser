@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:45:32.736Z",
+  "updatedAt": "2026-11-01T21:47:02.429Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -129,6 +129,10 @@
     },
     {
       "id": "SW-18020P",
+      "category": "Sensör"
+    },
+    {
+      "id": "Su Seviye Sensörü",
       "category": "Sensör"
     }
   ],
@@ -282,6 +286,11 @@
       "item": "SW-18020P",
       "drawer": "C1",
       "qty": 2
+    },
+    {
+      "item": "Su Seviye Sensörü",
+      "drawer": "C1",
+      "qty": 1
     }
   ]
 }
