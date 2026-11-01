@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:05:03.405Z",
+  "updatedAt": "2026-11-01T22:05:19.354Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -168,6 +168,10 @@
     {
       "id": "ESP-01S ESP8266",
       "category": "Mikrokontrolcü"
+    },
+    {
+      "id": "MAX7219 8x8 Dot Matrix",
+      "category": "Ekran / Gösterge"
     }
   ],
   "stock": [
@@ -364,6 +368,11 @@
     {
       "item": "ESP-01S ESP8266",
       "drawer": "B1",
+      "qty": 1
+    },
+    {
+      "item": "MAX7219 8x8 Dot Matrix",
+      "drawer": "B2",
       "qty": 1
     }
   ]
