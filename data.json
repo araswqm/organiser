@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:54:48.833Z",
+  "updatedAt": "2026-11-01T21:55:49.046Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -162,6 +162,10 @@
     },
     {
       "id": "ESP32-C3 Super Mini",
+      "category": "Mikrokontrolcü"
+    },
+    {
+      "id": "ESP-01S ESP8266",
       "category": "Mikrokontrolcü"
     }
   ],
@@ -355,6 +359,11 @@
       "item": "ESP32-C3 Super Mini",
       "drawer": "E1",
       "qty": 2
+    },
+    {
+      "item": "ESP-01S ESP8266",
+      "drawer": "E1",
+      "qty": 1
     }
   ]
 }
