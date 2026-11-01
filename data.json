@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:08:42.858Z",
+  "updatedAt": "2026-11-01T22:10:05.367Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -192,6 +192,10 @@
     {
       "id": "16x02 I2C LCD Mavi",
       "category": "Ekran / Gösterge"
+    },
+    {
+      "id": "DS1302 Saat Modülü",
+      "category": "Diğer"
     }
   ],
   "stock": [
@@ -417,6 +421,11 @@
     },
     {
       "item": "16x02 I2C LCD Mavi",
+      "drawer": "B2",
+      "qty": 1
+    },
+    {
+      "item": "DS1302 Saat Modülü",
       "drawer": "B2",
       "qty": 1
     }
