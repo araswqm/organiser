@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:51:27.185Z",
+  "updatedAt": "2026-11-01T21:51:35.809Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -359,6 +359,11 @@
     },
     {
       "item": "Kızılötesi Yangın Algılama Sensörü",
+      "drawer": "D1",
+      "qty": 1
+    },
+    {
+      "item": "MPU-6050",
       "drawer": "D1",
       "qty": 1
     }
