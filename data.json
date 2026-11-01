@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:35:46.295Z",
+  "updatedAt": "2026-11-01T21:36:31.710Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -96,6 +96,10 @@
     },
     {
       "id": "Sarı 5mm",
+      "category": "LED"
+    },
+    {
+      "id": "Mavi 5mm",
       "category": "LED"
     }
   ],
@@ -209,6 +213,11 @@
       "item": "Sarı 5mm",
       "drawer": "B1",
       "qty": 12
+    },
+    {
+      "item": "Mavi 5mm",
+      "drawer": "B1",
+      "qty": 11
     }
   ]
 }
