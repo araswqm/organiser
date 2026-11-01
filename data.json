@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:53:21.173Z",
+  "updatedAt": "2026-11-01T21:53:54.855Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -155,10 +155,6 @@
     {
       "id": "MPU-6050",
       "category": "Sensör"
-    },
-    {
-      "id": "Micro-Bit V2",
-      "category": "Geliştirme Kartı"
     }
   ],
   "stock": [
@@ -341,11 +337,6 @@
       "item": "MPU-6050",
       "drawer": "D1",
       "qty": 1
-    },
-    {
-      "item": "Micro-Bit V2",
-      "drawer": "E1",
-      "qty": 2
     }
   ]
 }
