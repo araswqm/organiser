@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:19:53.986Z",
+  "updatedAt": "2026-11-01T21:20:54.177Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -69,6 +69,10 @@
     {
       "id": "RGB Led Modülü",
       "category": "LED"
+    },
+    {
+      "id": "LDR",
+      "category": "Sensör"
     }
   ],
   "stock": [
@@ -146,6 +150,11 @@
       "item": "RGB Led Modülü",
       "drawer": "B1",
       "qty": 1
+    },
+    {
+      "item": "LDR",
+      "drawer": "B1",
+      "qty": 2
     }
   ]
 }
