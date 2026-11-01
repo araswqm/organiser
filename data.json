@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:12:37.786Z",
+  "updatedAt": "2026-11-01T21:13:28.071Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -44,6 +44,10 @@
     {
       "id": "BC237",
       "category": "Transistör"
+    },
+    {
+      "id": "47uF 25v",
+      "category": "Kondansatör"
     }
   ],
   "stock": [
@@ -89,6 +93,11 @@
     },
     {
       "item": "BC237",
+      "drawer": "A1",
+      "qty": 2
+    },
+    {
+      "item": "47uF 25v",
       "drawer": "A1",
       "qty": 2
     }
