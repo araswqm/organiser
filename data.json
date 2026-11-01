@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:44:49.627Z",
+  "updatedAt": "2026-11-01T21:45:32.736Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -125,6 +125,10 @@
     },
     {
       "id": "SW-520D",
+      "category": "Sensör"
+    },
+    {
+      "id": "SW-18020P",
       "category": "Sensör"
     }
   ],
@@ -271,6 +275,11 @@
     },
     {
       "item": "SW-520D",
+      "drawer": "C1",
+      "qty": 2
+    },
+    {
+      "item": "SW-18020P",
       "drawer": "C1",
       "qty": 2
     }
