@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:13:51.224Z",
+  "updatedAt": "2026-11-01T21:14:25.004Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -51,6 +51,10 @@
     },
     {
       "id": "100uF 16v",
+      "category": "Kondansatör"
+    },
+    {
+      "id": "8.2uF 400v",
       "category": "Kondansatör"
     }
   ],
@@ -107,6 +111,11 @@
     },
     {
       "item": "100uF 16v",
+      "drawer": "A1",
+      "qty": 1
+    },
+    {
+      "item": "8.2uF 400v",
       "drawer": "A1",
       "qty": 1
     }
