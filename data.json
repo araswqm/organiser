@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:55:49.046Z",
+  "updatedAt": "2026-11-01T22:03:27.902Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -237,132 +237,132 @@
     },
     {
       "item": "Trafik Lambası Modülü",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 1
     },
     {
       "item": "RGB Led Modülü",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 1
     },
     {
       "item": "LDR",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 2
     },
     {
       "item": "RGB Flaşörlü 3mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 3
     },
     {
       "item": "RGB Şeffaf 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 1
     },
     {
       "item": "Beyaz 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 15
     },
     {
       "item": "Yeşil 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 13
     },
     {
       "item": "Kırmızı 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 11
     },
     {
       "item": "Sarı 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 12
     },
     {
       "item": "Mavi 5mm",
-      "drawer": "B1",
+      "drawer": "A2",
       "qty": 11
     },
     {
       "item": "HC-SR04",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 2
     },
     {
       "item": "TTP223B",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 1
     },
     {
       "item": "FC-22 MQ2",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 1
     },
     {
       "item": "HC-SR501",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 1
     },
     {
       "item": "XY Joystick Modülü",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 1
     },
     {
       "item": "SW-520D",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 2
     },
     {
       "item": "SW-18020P",
-      "drawer": "C1",
+      "drawer": "A3",
       "qty": 2
     },
     {
       "item": "Su Seviye Sensörü",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "Yağmur Sensörü",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "Toprak Nem Sensörü",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "DHT11",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "Kızılötesi Yangın Algılama Sensörü",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "MPU-6050",
-      "drawer": "D1",
+      "drawer": "A4",
       "qty": 1
     },
     {
       "item": "Microbit V2",
-      "drawer": "E1",
+      "drawer": "B1",
       "qty": 2
     },
     {
       "item": "ESP32-C3 Super Mini",
-      "drawer": "E1",
+      "drawer": "B1",
       "qty": 2
     },
     {
       "item": "ESP-01S ESP8266",
-      "drawer": "E1",
+      "drawer": "B1",
       "qty": 1
     }
   ]
