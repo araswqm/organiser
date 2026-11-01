@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:50:27.419Z",
+  "updatedAt": "2026-11-01T21:50:42.735Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -339,6 +339,11 @@
     },
     {
       "item": "Su Seviye Sensörü",
+      "drawer": "D1",
+      "qty": 1
+    },
+    {
+      "item": "Yağmur Sensörü",
       "drawer": "D1",
       "qty": 1
     }
