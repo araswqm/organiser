@@ -1,4 +1,4 @@
-const CACHE = 'organizer-v2';
+const CACHE = 'organizer-v3';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', e => {
@@ -16,6 +16,9 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
+
+  // GitHub API: asla önbelleğe alma, doğrudan ağa git
+  if (url.hostname === 'api.github.com') return;
 
   // data.json: önce ağ (her zaman güncel), ağ yoksa son önbellek
   if (url.origin === location.origin && url.pathname.endsWith('/data.json')) {
