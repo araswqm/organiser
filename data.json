@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:07:09.770Z",
+  "updatedAt": "2026-11-01T22:08:09.766Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -183,6 +183,10 @@
     },
     {
       "id": "Tekli 7 Segment Display",
+      "category": "Ekran / Gösterge"
+    },
+    {
+      "id": "0.96 OLED",
       "category": "Ekran / Gösterge"
     }
   ],
@@ -401,6 +405,11 @@
       "item": "Tekli 7 Segment Display",
       "drawer": "B2",
       "qty": 1
+    },
+    {
+      "item": "0.96 OLED",
+      "drawer": "B2",
+      "qty": 2
     }
   ]
 }
