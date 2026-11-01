@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:33:24.874Z",
+  "updatedAt": "2026-11-01T21:34:04.973Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -84,6 +84,10 @@
     },
     {
       "id": "Beyaz 5mm",
+      "category": "LED"
+    },
+    {
+      "id": "Yeşil 5mm",
       "category": "LED"
     }
   ],
@@ -182,6 +186,11 @@
       "item": "Beyaz 5mm",
       "drawer": "B1",
       "qty": 15
+    },
+    {
+      "item": "Yeşil 5mm",
+      "drawer": "B1",
+      "qty": 1
     }
   ]
 }
