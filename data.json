@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:05:19.354Z",
+  "updatedAt": "2026-11-01T22:06:07.808Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -171,6 +171,10 @@
     },
     {
       "id": "MAX7219 8x8 Dot Matrix",
+      "category": "Ekran / Gösterge"
+    },
+    {
+      "id": "1.44 TFT SPI (broken)",
       "category": "Ekran / Gösterge"
     }
   ],
@@ -372,6 +376,11 @@
     },
     {
       "item": "MAX7219 8x8 Dot Matrix",
+      "drawer": "B2",
+      "qty": 1
+    },
+    {
+      "item": "1.44 TFT SPI (broken)",
       "drawer": "B2",
       "qty": 1
     }
