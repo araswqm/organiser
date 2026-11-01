@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:17:46.988Z",
+  "updatedAt": "2026-11-01T21:19:53.986Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -64,6 +64,10 @@
     },
     {
       "id": "Trafik Lambası Modülü",
+      "category": "LED"
+    },
+    {
+      "id": "RGB Led Modülü",
       "category": "LED"
     }
   ],
@@ -135,6 +139,11 @@
     },
     {
       "item": "Trafik Lambası Modülü",
+      "drawer": "B1",
+      "qty": 1
+    },
+    {
+      "item": "RGB Led Modülü",
       "drawer": "B1",
       "qty": 1
     }
