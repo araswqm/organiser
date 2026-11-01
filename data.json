@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:00:43.987Z",
+  "updatedAt": "2026-11-01T21:00:53.017Z",
   "categories": [
     "Direnç"
   ],
@@ -14,7 +14,7 @@
     {
       "item": "100K",
       "drawer": "A1",
-      "qty": 1
+      "qty": 10
     }
   ]
 }
