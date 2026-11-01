@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:54:00.855Z",
+  "updatedAt": "2026-11-01T21:54:08.758Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -8,7 +8,8 @@
     "Sensör",
     "Kondansatör",
     "LED",
-    "Diğer"
+    "Diğer",
+    "Mikrokontrolcü"
   ],
   "items": [
     {
