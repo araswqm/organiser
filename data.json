@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:10:13.558Z",
+  "updatedAt": "2026-11-01T21:10:29.172Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -35,6 +35,10 @@
     {
       "id": "BC547",
       "category": "Transistör"
+    },
+    {
+      "id": "LM35",
+      "category": "Sensör"
     }
   ],
   "stock": [
@@ -72,6 +76,11 @@
       "item": "BC547",
       "drawer": "A1",
       "qty": 3
+    },
+    {
+      "item": "LM35",
+      "drawer": "A1",
+      "qty": 1
     }
   ]
 }
