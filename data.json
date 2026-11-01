@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:47:30.725Z",
+  "updatedAt": "2026-11-01T21:47:49.229Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -141,6 +141,10 @@
     },
     {
       "id": "Toprak Nem Sensörü",
+      "category": "Sensör"
+    },
+    {
+      "id": "DHT11",
       "category": "Sensör"
     }
   ],
@@ -307,6 +311,11 @@
     },
     {
       "item": "Toprak Nem Sensörü",
+      "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "DHT11",
       "drawer": "C1",
       "qty": 1
     }
