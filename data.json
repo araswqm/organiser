@@ -1,9 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T20:59:36.248Z",
+  "updatedAt": "2026-11-01T21:00:43.987Z",
   "categories": [
     "Direnç"
   ],
-  "items": [],
-  "stock": []
+  "items": [
+    {
+      "id": "100K",
+      "category": "Direnç"
+    }
+  ],
+  "stock": [
+    {
+      "item": "100K",
+      "drawer": "A1",
+      "qty": 1
+    }
+  ]
 }
