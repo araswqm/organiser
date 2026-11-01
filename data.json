@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:31:24.788Z",
+  "updatedAt": "2026-11-01T21:31:45.554Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -76,10 +76,6 @@
     },
     {
       "id": "RGB Flaşörlü 3mm",
-      "category": "LED"
-    },
-    {
-      "id": "RGB 5mm",
       "category": "LED"
     }
   ],
@@ -168,11 +164,6 @@
       "item": "RGB Flaşörlü 3mm",
       "drawer": "B1",
       "qty": 3
-    },
-    {
-      "item": "RGB 5mm",
-      "drawer": "B1",
-      "qty": 1
     }
   ]
 }
