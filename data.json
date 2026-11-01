@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:01:28.697Z",
+  "updatedAt": "2026-11-01T21:01:34.724Z",
   "categories": [
     "Direnç",
     "Diyot"
@@ -9,6 +9,10 @@
     {
       "id": "100K",
       "category": "Direnç"
+    },
+    {
+      "id": "1N4007",
+      "category": "Diyot"
     }
   ],
   "stock": [
@@ -16,6 +20,11 @@
       "item": "100K",
       "drawer": "A1",
       "qty": 10
+    },
+    {
+      "item": "1N4007",
+      "drawer": "A1",
+      "qty": 5
     }
   ]
 }
