@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:47:49.229Z",
+  "updatedAt": "2026-11-01T21:48:51.090Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -145,6 +145,10 @@
     },
     {
       "id": "DHT11",
+      "category": "Sensör"
+    },
+    {
+      "id": "Kızılötesi Yangın Algılama Sensörü",
       "category": "Sensör"
     }
   ],
@@ -316,6 +320,11 @@
     },
     {
       "item": "DHT11",
+      "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "Kızılötesi Yangın Algılama Sensörü",
       "drawer": "C1",
       "qty": 1
     }
