@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:41:03.054Z",
+  "updatedAt": "2026-11-01T21:42:50.528Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -108,6 +108,10 @@
     },
     {
       "id": "TTP223B",
+      "category": "Sensör"
+    },
+    {
+      "id": "FC-22 MQ2",
       "category": "Sensör"
     }
   ],
@@ -234,6 +238,11 @@
     },
     {
       "item": "TTP223B",
+      "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "FC-22 MQ2",
       "drawer": "C1",
       "qty": 1
     }
