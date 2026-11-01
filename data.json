@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T21:43:37.458Z",
+  "updatedAt": "2026-11-01T21:43:54.796Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -118,6 +118,10 @@
     {
       "id": "HC-SR501",
       "category": "Sensör"
+    },
+    {
+      "id": "XY Joystick Modülü",
+      "category": "Diğer"
     }
   ],
   "stock": [
@@ -253,6 +257,11 @@
     },
     {
       "item": "HC-SR501",
+      "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "XY Joystick Modülü",
       "drawer": "C1",
       "qty": 1
     }
