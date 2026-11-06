@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:53:34.329Z",
+  "updatedAt": "2026-11-06T17:53:43.701Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -230,10 +230,6 @@
     {
       "id": "9V Pil DC Barrel Adaptörü",
       "category": "Güç"
-    },
-    {
-      "id": "9V Pil Başlığı (Kablolu)",
-      "category": ""
     },
     {
       "id": "Microbit Pil Yataklı Güç Kaynağı",
@@ -518,11 +514,6 @@
       "item": "9V Pil DC Barrel Adaptörü",
       "drawer": "C1",
       "qty": 1
-    },
-    {
-      "item": "9V Pil Başlığı (Kablolu)",
-      "drawer": "C1",
-      "qty": 3
     },
     {
       "item": "Microbit Pil Yataklı Güç Kaynağı",
