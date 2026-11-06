@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:47:18.792Z",
+  "updatedAt": "2026-11-06T17:49:32.481Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -225,6 +225,10 @@
     },
     {
       "id": "MT3608 Voltaj Yükseltici",
+      "category": "Güç"
+    },
+    {
+      "id": "9V Pil DC Barrel Adaptörü",
       "category": "Güç"
     }
   ],
@@ -493,6 +497,11 @@
       "item": "MT3608 Voltaj Yükseltici",
       "drawer": "B4",
       "qty": 5
+    },
+    {
+      "item": "9V Pil DC Barrel Adaptörü",
+      "drawer": "C1",
+      "qty": 1
     }
   ]
 }
