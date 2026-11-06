@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:58:33.428Z",
+  "updatedAt": "2026-11-06T17:58:36.176Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -254,10 +254,6 @@
     {
       "id": "TLi010EB Li-on Batarya (3.7V 1030mAh)",
       "category": "Güç"
-    },
-    {
-      "id": "9V Pil",
-      "category": ""
     }
   ],
   "stock": [
@@ -558,11 +554,6 @@
     },
     {
       "item": "TLi010EB Li-on Batarya (3.7V 1030mAh)",
-      "drawer": "C2",
-      "qty": 1
-    },
-    {
-      "item": "9V Pil",
       "drawer": "C2",
       "qty": 1
     }
