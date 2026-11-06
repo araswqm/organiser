@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:40:31.961Z",
+  "updatedAt": "2026-11-06T17:41:51.603Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -213,6 +213,10 @@
     },
     {
       "id": "Tek Kanallı Röle Kartı (5V)",
+      "category": "Güç"
+    },
+    {
+      "id": "IP5407 Powerbank Modülü",
       "category": "Güç"
     }
   ],
@@ -464,6 +468,11 @@
     },
     {
       "item": "Tek Kanallı Röle Kartı (5V)",
+      "drawer": "B4",
+      "qty": 1
+    },
+    {
+      "item": "IP5407 Powerbank Modülü",
       "drawer": "B4",
       "qty": 1
     }
