@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:33:04.055Z",
+  "updatedAt": "2026-11-06T17:33:09.177Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -201,6 +201,10 @@
     {
       "id": "ESP32-S3 Super Mini",
       "category": "Mikrokontrolcü"
+    },
+    {
+      "id": "TP4056",
+      "category": "Şarj Modülü"
     }
   ],
   "stock": [
@@ -438,6 +442,11 @@
       "item": "ESP32-S3 Super Mini",
       "drawer": "B1",
       "qty": 1
+    },
+    {
+      "item": "TP4056",
+      "drawer": "B3",
+      "qty": 6
     }
   ]
 }
