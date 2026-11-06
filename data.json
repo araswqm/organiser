@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T18:05:02.538Z",
+  "updatedAt": "2026-11-06T18:05:12.564Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -266,6 +266,10 @@
     {
       "id": "3.7V 800mAh Li-ion Batarya",
       "category": ""
+    },
+    {
+      "id": "TLi010EB Li-ion Batarya (3.7V 1030mAh)",
+      "category": "Güç"
     }
   ],
   "stock": [
@@ -581,6 +585,11 @@
     },
     {
       "item": "3.7V 800mAh Li-ion Batarya",
+      "drawer": "C2",
+      "qty": 1
+    },
+    {
+      "item": "TLi010EB Li-ion Batarya (3.7V 1030mAh)",
       "drawer": "C2",
       "qty": 1
     }
