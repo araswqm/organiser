@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:53:48.168Z",
+  "updatedAt": "2026-11-06T17:55:37.323Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -245,6 +245,10 @@
     },
     {
       "id": "9V Pil Başlığı (Kablolu)",
+      "category": "Güç"
+    },
+    {
+      "id": "18650 Pil Yatağı (İki Yuvalı)",
       "category": "Güç"
     }
   ],
@@ -538,6 +542,11 @@
       "item": "9V Pil Başlığı (Kablolu)",
       "drawer": "C1",
       "qty": 3
+    },
+    {
+      "item": "18650 Pil Yatağı (İki Yuvalı)",
+      "drawer": "C1",
+      "qty": 1
     }
   ]
 }
