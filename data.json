@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:55:37.323Z",
+  "updatedAt": "2026-11-06T17:58:01.116Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -249,6 +249,10 @@
     },
     {
       "id": "18650 Pil Yatağı (İki Yuvalı)",
+      "category": "Güç"
+    },
+    {
+      "id": "TLi010EB Li-on Batarya (3.7V 1030mAh)",
       "category": "Güç"
     }
   ],
@@ -546,6 +550,11 @@
     {
       "item": "18650 Pil Yatağı (İki Yuvalı)",
       "drawer": "C1",
+      "qty": 1
+    },
+    {
+      "item": "TLi010EB Li-on Batarya (3.7V 1030mAh)",
+      "drawer": "C2",
       "qty": 1
     }
   ]
