@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:52:30.424Z",
+  "updatedAt": "2026-11-06T17:53:08.347Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -242,6 +242,10 @@
     {
       "id": "4573-02H (Molex 51021-0200) Konnektör",
       "category": ""
+    },
+    {
+      "id": "Microbit Pil Yataklı Güç Kaynağı",
+      "category": "Güç"
     }
   ],
   "stock": [
@@ -529,6 +533,11 @@
       "item": "4573-02H (Molex 51021-0200) Konnektör",
       "drawer": "C1",
       "qty": 4
+    },
+    {
+      "item": "Microbit Pil Yataklı Güç Kaynağı",
+      "drawer": "C1",
+      "qty": 1
     }
   ]
 }
