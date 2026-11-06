@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-01T22:10:05.367Z",
+  "updatedAt": "2026-11-06T17:32:00.776Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -387,7 +387,7 @@
     {
       "item": "ESP32-C3 Super Mini",
       "drawer": "B1",
-      "qty": 2
+      "qty": 1
     },
     {
       "item": "ESP-01S ESP8266",
