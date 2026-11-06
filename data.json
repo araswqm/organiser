@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:37:27.433Z",
+  "updatedAt": "2026-11-06T17:37:34.959Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -204,6 +204,10 @@
     },
     {
       "id": "IP2312 3A (USB-C)",
+      "category": ""
+    },
+    {
+      "id": "TP4056 (USB-C)",
       "category": ""
     }
   ],
@@ -447,6 +451,11 @@
       "item": "IP2312 3A (USB-C)",
       "drawer": "B3",
       "qty": 1
+    },
+    {
+      "item": "TP4056 (USB-C)",
+      "drawer": "B3",
+      "qty": 2
     }
   ]
 }
