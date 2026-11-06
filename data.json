@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T18:12:33.012Z",
+  "updatedAt": "2026-11-06T18:12:43.672Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -270,10 +270,6 @@
     {
       "id": "3.7V 800mAh Li-ion Batarya",
       "category": "Güç"
-    },
-    {
-      "id": "3.7 70mAh Li-Po Batarya",
-      "category": ""
     }
   ],
   "stock": [
@@ -594,11 +590,6 @@
     },
     {
       "item": "3.7V 800mAh Li-ion Batarya",
-      "drawer": "C2",
-      "qty": 1
-    },
-    {
-      "item": "3.7 70mAh Li-Po Batarya",
       "drawer": "C2",
       "qty": 1
     }
