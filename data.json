@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:32:00.776Z",
+  "updatedAt": "2026-11-06T17:32:09.336Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -196,6 +196,10 @@
     {
       "id": "DS1302 Saat Modülü",
       "category": "Diğer"
+    },
+    {
+      "id": "ESP32-S3 Super Mini",
+      "category": "Mikrokontrolcü"
     }
   ],
   "stock": [
@@ -427,6 +431,11 @@
     {
       "item": "DS1302 Saat Modülü",
       "drawer": "B2",
+      "qty": 1
+    },
+    {
+      "item": "ESP32-S3 Super Mini",
+      "drawer": "B1",
       "qty": 1
     }
   ]
