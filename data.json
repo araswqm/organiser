@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:37:23.299Z",
+  "updatedAt": "2026-11-06T17:37:27.433Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -201,10 +201,6 @@
     {
       "id": "ESP32-S3 Super Mini",
       "category": "Mikrokontrolcü"
-    },
-    {
-      "id": "TP4056",
-      "category": "Şarj Modülü"
     },
     {
       "id": "IP2312 3A (USB-C)",
@@ -446,11 +442,6 @@
       "item": "ESP32-S3 Super Mini",
       "drawer": "B1",
       "qty": 1
-    },
-    {
-      "item": "TP4056",
-      "drawer": "B3",
-      "qty": 6
     },
     {
       "item": "IP2312 3A (USB-C)",
