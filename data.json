@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:40:22.019Z",
+  "updatedAt": "2026-11-06T17:40:31.961Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -210,6 +210,10 @@
     {
       "id": "IP2312 3A (USB-C)",
       "category": "Şarj Modülü"
+    },
+    {
+      "id": "Tek Kanallı Röle Kartı (5V)",
+      "category": "Güç"
     }
   ],
   "stock": [
@@ -456,6 +460,11 @@
     {
       "item": "IP2312 3A (USB-C)",
       "drawer": "B3",
+      "qty": 1
+    },
+    {
+      "item": "Tek Kanallı Röle Kartı (5V)",
+      "drawer": "B4",
       "qty": 1
     }
   ]
