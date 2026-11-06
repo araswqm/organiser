@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:59:47.409Z",
+  "updatedAt": "2026-11-06T18:00:27.668Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -261,6 +261,10 @@
     },
     {
       "id": "CR2025 (3V)",
+      "category": "Güç"
+    },
+    {
+      "id": "CR2032 (3V)",
       "category": "Güç"
     }
   ],
@@ -572,6 +576,11 @@
     },
     {
       "item": "CR2025 (3V)",
+      "drawer": "C2",
+      "qty": 1
+    },
+    {
+      "item": "CR2032 (3V)",
       "drawer": "C2",
       "qty": 1
     }
