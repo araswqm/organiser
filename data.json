@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:44:31.256Z",
+  "updatedAt": "2026-11-06T17:47:15.543Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -221,6 +221,10 @@
     },
     {
       "id": "3.3V / 5V Breadboard Güç Kartı",
+      "category": "Güç"
+    },
+    {
+      "id": "MT3608 Voltaj Yükseltici",
       "category": "Güç"
     }
   ],
@@ -484,6 +488,11 @@
       "item": "3.3V / 5V Breadboard Güç Kartı",
       "drawer": "B4",
       "qty": 1
+    },
+    {
+      "item": "MT3608 Voltaj Yükseltici",
+      "drawer": "B4",
+      "qty": 2
     }
   ]
 }
