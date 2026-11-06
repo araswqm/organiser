@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T18:20:20.445Z",
+  "updatedAt": "2026-11-06T18:21:01.858Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -281,6 +281,10 @@
     },
     {
       "id": "18650 3.7V 1200mAh Li-ion Batarya (Kutup Başlı)",
+      "category": "Güç"
+    },
+    {
+      "id": "18650 3.7V 1200mAh Batarya",
       "category": "Güç"
     }
   ],
@@ -619,6 +623,11 @@
       "item": "18650 3.7V 1200mAh Li-ion Batarya (Kutup Başlı)",
       "drawer": "C3",
       "qty": 2
+    },
+    {
+      "item": "18650 3.7V 1200mAh Batarya",
+      "drawer": "C3",
+      "qty": 1
     }
   ]
 }
