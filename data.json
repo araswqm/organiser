@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:59:44.810Z",
+  "updatedAt": "2026-11-06T17:59:47.409Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -257,6 +257,10 @@
     },
     {
       "id": "9V Pil",
+      "category": "Güç"
+    },
+    {
+      "id": "CR2025 (3V)",
       "category": "Güç"
     }
   ],
@@ -563,6 +567,11 @@
     },
     {
       "item": "9V Pil",
+      "drawer": "C2",
+      "qty": 1
+    },
+    {
+      "item": "CR2025 (3V)",
       "drawer": "C2",
       "qty": 1
     }
