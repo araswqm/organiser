@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T18:22:06.750Z",
+  "updatedAt": "2026-11-06T18:22:34.315Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -289,6 +289,10 @@
     },
     {
       "id": "18650 3.7V 800mAh Batarya",
+      "category": "Güç"
+    },
+    {
+      "id": "18650 (Kapasite Belirsiz)",
       "category": "Güç"
     }
   ],
@@ -637,6 +641,11 @@
       "item": "18650 3.7V 800mAh Batarya",
       "drawer": "C3",
       "qty": 1
+    },
+    {
+      "item": "18650 (Kapasite Belirsiz)",
+      "drawer": "C3",
+      "qty": 2
     }
   ]
 }
