@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:37:08.751Z",
+  "updatedAt": "2026-11-06T17:37:14.478Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -205,10 +205,6 @@
     {
       "id": "TP4056",
       "category": "Şarj Modülü"
-    },
-    {
-      "id": "IP2312 3A",
-      "category": ""
     }
   ],
   "stock": [
@@ -451,11 +447,6 @@
       "item": "TP4056",
       "drawer": "B3",
       "qty": 6
-    },
-    {
-      "item": "IP2312 3A",
-      "drawer": "B3",
-      "qty": 1
     }
   ]
 }
