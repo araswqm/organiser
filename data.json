@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T18:00:27.668Z",
+  "updatedAt": "2026-11-06T18:04:56.482Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -266,6 +266,10 @@
     {
       "id": "CR2032 (3V)",
       "category": "Güç"
+    },
+    {
+      "id": "3.7V 800mAh Li-ion Batarya",
+      "category": ""
     }
   ],
   "stock": [
@@ -581,6 +585,11 @@
     },
     {
       "item": "CR2032 (3V)",
+      "drawer": "C2",
+      "qty": 1
+    },
+    {
+      "item": "3.7V 800mAh Li-ion Batarya",
       "drawer": "C2",
       "qty": 1
     }
