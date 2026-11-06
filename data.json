@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:53:23.433Z",
+  "updatedAt": "2026-11-06T17:53:29.302Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -233,10 +233,6 @@
     },
     {
       "id": "9V Pil Başlığı (Kablolu)",
-      "category": ""
-    },
-    {
-      "id": "9V Pil Başlığı (Kablosuz, 9V Pilden Sökülmüş Konnektör)",
       "category": ""
     },
     {
@@ -523,11 +519,6 @@
       "item": "9V Pil Başlığı (Kablolu)",
       "drawer": "C1",
       "qty": 3
-    },
-    {
-      "item": "9V Pil Başlığı (Kablosuz, 9V Pilden Sökülmüş Konnektör)",
-      "drawer": "C1",
-      "qty": 2
     },
     {
       "item": "Microbit Pil Yataklı Güç Kaynağı",
