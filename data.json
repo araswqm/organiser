@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:53:08.347Z",
+  "updatedAt": "2026-11-06T17:53:15.749Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -237,10 +237,6 @@
     },
     {
       "id": "9V Pil Başlığı (Kablosuz, 9V Pilden Sökülmüş Konnektör)",
-      "category": ""
-    },
-    {
-      "id": "4573-02H (Molex 51021-0200) Konnektör",
       "category": ""
     },
     {
@@ -528,11 +524,6 @@
       "item": "9V Pil Başlığı (Kablosuz, 9V Pilden Sökülmüş Konnektör)",
       "drawer": "C1",
       "qty": 2
-    },
-    {
-      "item": "4573-02H (Molex 51021-0200) Konnektör",
-      "drawer": "C1",
-      "qty": 4
     },
     {
       "item": "Microbit Pil Yataklı Güç Kaynağı",
