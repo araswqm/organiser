@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T17:41:51.603Z",
+  "updatedAt": "2026-11-06T17:44:31.256Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -217,6 +217,10 @@
     },
     {
       "id": "IP5407 Powerbank Modülü",
+      "category": "Güç"
+    },
+    {
+      "id": "3.3V / 5V Breadboard Güç Kartı",
       "category": "Güç"
     }
   ],
@@ -473,6 +477,11 @@
     },
     {
       "item": "IP5407 Powerbank Modülü",
+      "drawer": "B4",
+      "qty": 1
+    },
+    {
+      "item": "3.3V / 5V Breadboard Güç Kartı",
       "drawer": "B4",
       "qty": 1
     }
