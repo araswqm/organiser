@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T16:05:10.788Z",
+  "updatedAt": "2026-11-18T16:05:38.307Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -16,7 +16,8 @@
     "Kablo",
     "Soket",
     "Adaptör",
-    "Motor"
+    "Motor",
+    "Driver"
   ],
   "items": [
     {
