@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T14:55:34.521Z",
+  "updatedAt": "2026-11-18T14:55:37.294Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -295,6 +295,10 @@
     {
       "id": "18650 (Kapasite Belirsiz)",
       "category": "Güç"
+    },
+    {
+      "id": "USB-A to USB-B",
+      "category": "Kablo"
     }
   ],
   "stock": [
@@ -646,6 +650,11 @@
     {
       "item": "18650 (Kapasite Belirsiz)",
       "drawer": "C3",
+      "qty": 2
+    },
+    {
+      "item": "USB-A to USB-B",
+      "drawer": "C4",
       "qty": 2
     }
   ]
