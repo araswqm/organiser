@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T16:05:06.345Z",
+  "updatedAt": "2026-11-18T16:05:10.788Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -310,6 +310,10 @@
     {
       "id": "USB - ESP8266 Wifi Flaşlama Adaptörü",
       "category": "Adaptör"
+    },
+    {
+      "id": "28BYJ-48 Step Motor",
+      "category": "Motor"
     }
   ],
   "stock": [
@@ -676,6 +680,11 @@
     {
       "item": "USB - ESP8266 Wifi Flaşlama Adaptörü",
       "drawer": "C4",
+      "qty": 1
+    },
+    {
+      "item": "28BYJ-48 Step Motor",
+      "drawer": "D1",
       "qty": 1
     }
   ]
