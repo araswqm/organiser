@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T16:05:38.307Z",
+  "updatedAt": "2026-11-18T16:05:41.760Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -315,6 +315,10 @@
     {
       "id": "28BYJ-48 Step Motor",
       "category": "Motor"
+    },
+    {
+      "id": "ULN2003 Step Motor Sürücü",
+      "category": "Driver"
     }
   ],
   "stock": [
@@ -685,6 +689,11 @@
     },
     {
       "item": "28BYJ-48 Step Motor",
+      "drawer": "D1",
+      "qty": 1
+    },
+    {
+      "item": "ULN2003 Step Motor Sürücü",
       "drawer": "D1",
       "qty": 1
     }
