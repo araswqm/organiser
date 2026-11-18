@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T14:57:42.120Z",
+  "updatedAt": "2026-11-18T14:57:53.094Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -305,6 +305,10 @@
     {
       "id": "USB-C Soket (Artı Eksi Kutuplu)",
       "category": "Soket"
+    },
+    {
+      "id": "USB - ESP8266 Wifi Flaşlama Adaptörü",
+      "category": "Adaptör"
     }
   ],
   "stock": [
@@ -667,6 +671,11 @@
       "item": "USB-C Soket (Artı Eksi Kutuplu)",
       "drawer": "C4",
       "qty": 2
+    },
+    {
+      "item": "USB - ESP8266 Wifi Flaşlama Adaptörü",
+      "drawer": "C4",
+      "qty": 1
     }
   ]
 }
