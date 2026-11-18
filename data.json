@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T14:56:03.575Z",
+  "updatedAt": "2026-11-18T14:56:07.463Z",
   "categories": [
     "Direnç",
     "Diyot",
@@ -300,6 +300,10 @@
     {
       "id": "USB-A to USB-B",
       "category": "Kablo"
+    },
+    {
+      "id": "USB-C Soket (Artı Eksi Kutuplu)",
+      "category": "Soket"
     }
   ],
   "stock": [
@@ -655,6 +659,11 @@
     },
     {
       "item": "USB-A to USB-B",
+      "drawer": "C4",
+      "qty": 2
+    },
+    {
+      "item": "USB-C Soket (Artı Eksi Kutuplu)",
       "drawer": "C4",
       "qty": 2
     }
